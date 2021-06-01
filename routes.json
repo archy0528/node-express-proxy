@@ -1,0 +1,6 @@
+[
+  {
+    "route": "/ad/sec",
+    "address": "http://localhost:3000"
+  }
+]
