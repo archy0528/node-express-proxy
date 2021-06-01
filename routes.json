@@ -1,6 +1,7 @@
 [
   {
     "route": "/ad/sec",
-    "address": "http://localhost:3000"
+    "address": "http://localhost:3000",
+    "secure": false
   }
 ]
