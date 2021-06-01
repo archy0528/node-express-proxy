@@ -1,0 +1,12 @@
+{
+  "label": {
+    "username": "强积金 编号 /用户名",
+    "password": "密码"
+  },
+  "placeholder": {},
+  "helperText": {},
+  "validator": {
+    "required": "此字段是必需的",
+    "email": "请输入有效的电子邮件地址"
+  }
+}

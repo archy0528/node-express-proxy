@@ -1,0 +1,12 @@
+{
+  "label": {
+    "username": "eMPF ID / Username",
+    "password": "Password"
+  },
+  "placeholder": {},
+  "helperText": {},
+  "validator": {
+    "required": "This field is required",
+    "email": "Please enter a valid email address"
+  }
+}
