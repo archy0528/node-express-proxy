@@ -7,11 +7,10 @@ const cors = require("cors");
 const proxy = require("http-proxy-middleware");
 const fs = require("fs");
 const path = require("path");
-const routes = require("./routes.json");
+const routes = require("./routes");
+const apiRoutes = require("./api");
 
 const app = express();
-
-app.get("/test", (req, res) => res.send("Hello World"));
 
 for (route of routes) {
   app.use(
@@ -19,10 +18,10 @@ for (route of routes) {
     proxy.createProxyMiddleware({
       target: route.address,
       changeOrigin: true,
-      secure: false,
-      pathRewrite: (path, req) => {
-        return path.split("/").slice(2).join("/");
-      },
+      secure: route.secure,
+      // pathRewrite: (path, req) => {
+      //   return path.split("/").slice(2).join("/");
+      // },
     })
   );
 }
@@ -34,6 +33,8 @@ app.set("trust proxy", 1);
 
 app.use(bodyParser.json());
 app.use(cors());
+app.use("/ad", express.static("public/ad/build"));
+app.use("/api", apiRoutes);
 
 const sslOptions = {
   key: fs.readFileSync(path.resolve(process.env.HOME, "key.pem")),
