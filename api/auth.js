@@ -13,6 +13,11 @@ router.post("/login", async (req, res) => {
         }),
       }
     );
+    res.cookie("life-session", response.data.sessionToken, {
+      maxAge: 1000 * 60 * 10, // 10mins
+      httpOnly: true,
+      secure: false,
+    });
     res.json(response.data);
   } catch (error) {
     res.status(500).json(error.response.data);
