@@ -8,7 +8,7 @@ const proxy = require("http-proxy-middleware");
 const fs = require("fs");
 const path = require("path");
 const routes = require("./routes");
-const apiRoutes = require("./api");
+// const apiRoutes = require("./api");
 
 const app = express();
 
@@ -19,9 +19,8 @@ for (route of routes) {
       target: route.address,
       changeOrigin: true,
       secure: route.secure,
-      // pathRewrite: (path, req) => {
-      //   return path.split("/").slice(2).join("/");
-      // },
+      pathRewrite: route.pathRewrite,
+      onProxyReq: route.onProxyReq,
     })
   );
 }
@@ -34,7 +33,7 @@ app.set("trust proxy", 1);
 app.use(bodyParser.json());
 app.use(cors());
 app.use("/ad", express.static("public/ad/build"));
-app.use("/api", apiRoutes);
+// app.use("/api", apiRoutes);
 
 const sslOptions = {
   key: fs.readFileSync(path.resolve(process.env.HOME, "key.pem")),
