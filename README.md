@@ -7,5 +7,5 @@ Generate cert.pem and key.pem
 3. Enter pass phrase -> password
 4. Enter optional details -> leave it blank
 5. Open start.bat
-6. Start / Run Admin Portal Application
+6. Start / Run Admin Portal Application (life-admin-portal-app)
 7. Access https://localhost:5000/ad
