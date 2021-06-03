@@ -14,12 +14,6 @@ module.exports = [
     pathRewrite: {
       "^/ad/sec/api": "/ad/sec/api",
     },
-    onProxyReq: (proxyReq, req, _res) => {
-      const token = req.headers?.authorization;
-      if (token) {
-        proxyReq.setHeader("Authorization", `Bearer ${token}`);
-      }
-    },
   },
   {
     route: "/ad/sec",

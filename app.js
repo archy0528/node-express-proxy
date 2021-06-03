@@ -18,9 +18,19 @@ for (route of routes) {
     proxy.createProxyMiddleware({
       target: route.address,
       changeOrigin: true,
+      cookieDomainRewrite: "localhost",
       secure: route.secure,
       pathRewrite: route.pathRewrite,
-      onProxyReq: route.onProxyReq,
+      onProxyReq: (proxyReq, req) => {
+        Object.keys(req.headers).forEach((key) => {
+          proxyReq.setHeader(key, req.headers[key]);
+        });
+      },
+      onProxyRes: (proxyRes, _req, res) => {
+        Object.keys(proxyRes.headers).forEach((key) => {
+          res.append(key, proxyRes.headers[key]);
+        });
+      },
     })
   );
 }
