@@ -13,6 +13,10 @@ module.exports = [
     secure: false,
     pathRewrite: {
       "^/local/ad/sec/api": "/",
+      "^/local/ad/sec/api/system": "/system",
+      "^/local/ad/sec/api/reg/ee": "/reg/ee",
+      "^/local/ad/sec/api/reg/er": "/reg/er",
+      "^/local/ad/sec/api/term": "/term",
     },
   },
   {
