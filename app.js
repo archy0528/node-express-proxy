@@ -8,9 +8,18 @@ const proxy = require("http-proxy-middleware");
 const fs = require("fs");
 const path = require("path");
 const routes = require("./routes");
-// const apiRoutes = require("./api");
 
 const app = express();
+
+app.disable("x-powered-by");
+app.set("json spaces", 2);
+app.set("etag", false);
+app.set("trust proxy", 1);
+
+app.use(bodyParser.json());
+app.use(cors());
+app.use("/ad", express.static("public/ad/build"));
+app.options("*", cors());
 
 for (route of routes) {
   app.use(
@@ -34,16 +43,6 @@ for (route of routes) {
     })
   );
 }
-
-app.disable("x-powered-by");
-app.set("json spaces", 2);
-app.set("etag", false);
-app.set("trust proxy", 1);
-
-app.use(bodyParser.json());
-app.use(cors());
-app.use("/ad", express.static("public/ad/build"));
-// app.use("/api", apiRoutes);
 
 const sslOptions = {
   key: fs.readFileSync(path.resolve(process.env.HOME, "key.pem")),
