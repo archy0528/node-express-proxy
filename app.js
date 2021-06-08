@@ -8,6 +8,7 @@ const proxy = require("http-proxy-middleware");
 const fs = require("fs");
 const path = require("path");
 const routes = require("./routes");
+const apiRoutes = require("./api");
 
 const app = express();
 
@@ -18,8 +19,9 @@ app.set("trust proxy", 1);
 
 app.use(bodyParser.json());
 app.use(cors());
-app.use("/ad", express.static("public/ad/build"));
 app.options("*", cors());
+app.use("/ad", express.static("public/ad/build"));
+app.use("/ad/api", apiRoutes);
 
 for (route of routes) {
   app.use(
