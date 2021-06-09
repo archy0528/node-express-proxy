@@ -16,8 +16,27 @@ router.post("/login", async (req, res) => {
     res.cookie("life-session", response.data.sessionToken, {
       maxAge: 1000 * 60 * 10, // 10mins
       httpOnly: true,
-      secure: false,
+      secure: true,
     });
+    res.json(response.data);
+  } catch (error) {
+    res.status(500).json(error.response.data);
+  }
+});
+
+router.post("/reissue", async (req, res) => {
+  try {
+    const response = await axios.get(
+      "https://ec2-18-166-169-227.ap-east-1.compute.amazonaws.com/ad/api/auth/reissue",
+      {
+        httpsAgent: new https.Agent({
+          rejectUnauthorized: false,
+        }),
+        headers: {
+          cookie: req.headers.cookie,
+        },
+      }
+    );
     res.json(response.data);
   } catch (error) {
     res.status(500).json(error.response.data);
@@ -26,16 +45,15 @@ router.post("/login", async (req, res) => {
 
 router.get("/userinfo", async (req, res) => {
   try {
-    const authorization = req.headers.authorization;
     const response = await axios.get(
       "https://ec2-18-166-169-227.ap-east-1.compute.amazonaws.com/ad/api/auth/userinfo",
       {
-        headers: {
-          authorization,
-        },
         httpsAgent: new https.Agent({
           rejectUnauthorized: false,
         }),
+        headers: {
+          cookie: req.headers.cookie,
+        },
       }
     );
     res.json(response.data);
