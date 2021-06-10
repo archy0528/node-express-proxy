@@ -24,6 +24,11 @@ router.post("/login", async (req, res) => {
   }
 });
 
+router.post("/logout", (req, res) => {
+  res.clearCookie("life-session");
+  res.sendStatus(200);
+});
+
 router.post("/reissue", async (req, res) => {
   try {
     const response = await axios.get(
