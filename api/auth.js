@@ -14,7 +14,6 @@ router.post("/login", async (req, res) => {
       }
     );
     res.cookie("life-session", response.data.sessionToken, {
-      maxAge: 1000 * 60 * 10, // 10mins
       httpOnly: true,
       secure: true,
     });
