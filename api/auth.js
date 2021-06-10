@@ -30,7 +30,7 @@ router.post("/logout", (req, res) => {
 
 router.post("/reissue", async (req, res) => {
   try {
-    const response = await axios.get(
+    const response = await axios.post(
       "https://ec2-18-166-169-227.ap-east-1.compute.amazonaws.com/ad/api/auth/reissue",
       {
         httpsAgent: new https.Agent({
