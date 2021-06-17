@@ -17,6 +17,7 @@ module.exports = [
       "^/local/ad/sec/api/reg/ee": "/reg/ee",
       "^/local/ad/sec/api/reg/er": "/reg/er",
       "^/local/ad/sec/api/term": "/term",
+      "^/local/ad/sec/api/enr/er": "/enr/er",
     },
   },
   {
