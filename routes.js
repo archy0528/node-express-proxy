@@ -22,7 +22,7 @@ module.exports = [
   },
   {
     route: "/ad/api",
-    address: "https://ec2-16-162-22-81.ap-east-1.compute.amazonaws.com",
+    address: "https://ec2-18-166-169-227.ap-east-1.compute.amazonaws.com",
     secure: false,
     pathRewrite: {
       "^/ad/api": "/ad/api",
@@ -30,7 +30,7 @@ module.exports = [
   },
   {
     route: "/ad/sec/api",
-    address: "https://ec2-16-162-22-81.ap-east-1.compute.amazonaws.com",
+    address: "https://ec2-18-166-169-227.ap-east-1.compute.amazonaws.com",
     secure: false,
     pathRewrite: {
       "^/ad/sec/api": "/ad/sec/api",
