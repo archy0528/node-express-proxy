@@ -49,9 +49,9 @@ for (route of routes) {
 }
 
 const sslOptions = {
-  key: fs.readFileSync(path.resolve(process.env.HOME, "localhost-key.pem")), // "key.pem")),
-  cert: fs.readFileSync(path.resolve(process.env.HOME, "localhost.pem")), //"cert.pem")),
-  //passphrase: process.env.PASSPHRASE,
+  key: fs.readFileSync(path.resolve(process.env.HOME, "key.pem")),
+  cert: fs.readFileSync(path.resolve(process.env.HOME, "cert.pem")),
+  passphrase: process.env.PASSPHRASE,
 };
 
 const server = https.createServer(sslOptions, app);
