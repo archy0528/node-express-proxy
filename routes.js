@@ -19,6 +19,7 @@ module.exports = [
       "^/local/ad/sec/api/term": "/term",
       "^/local/ad/sec/api/enr/ee": "/enr/ee",
       "^/local/ad/sec/api/enr/er": "/enr/er",
+      "^/local/ad/sec/api/enr/cee": "/enr/cee",
       "^/local/ad/sec/api/enr/sep": "/enr/sep",
       "^/local/ad/sec/api/mlfub": "/mlfub",
       "^/local/ad/sec/api/dm": "/dm",
