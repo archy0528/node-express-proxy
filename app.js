@@ -48,17 +48,21 @@ for (route of routes) {
   );
 }
 
-const sslOptions = {
-  key: fs.readFileSync(path.resolve(process.env.HOME, "key.pem")),
-  cert: fs.readFileSync(path.resolve(process.env.HOME, "cert.pem")),
-  passphrase: process.env.PASSPHRASE,
-};
+const port = process.env.PORT || 5000;
 
-const server = https.createServer(sslOptions, app);
-const port = process.env.PORT || 443;
+app.listen(port)
 
-server.listen(port, function () {
-  let host = server.address().address;
-  let port = server.address().port;
-  console.log("App listening at http://%s:%s", host, port);
-});
+// const sslOptions = {
+//   key: fs.readFileSync(path.resolve(process.env.HOME, "key.pem")),
+//   cert: fs.readFileSync(path.resolve(process.env.HOME, "cert.pem")),
+//   passphrase: process.env.PASSPHRASE,
+// };
+
+// const server = https.createServer(sslOptions, app);
+// const port = process.env.PORT || 443;
+
+// server.listen(port, function () {
+//   let host = server.address().address;
+//   let port = server.address().port;
+//   console.log("App listening at http://%s:%s", host, port);
+// });
