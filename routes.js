@@ -23,7 +23,7 @@ module.exports = [
       "^/local/ad/sec/api/enr/sep": "/enr/sep",
       "^/local/ad/sec/api/mlfub": "/mlfub",
       "^/local/ad/sec/api/dm": "/dm",
-      "^/local/ad/sec/api/tranfer": "/tranfer",
+      "^/local/ad/sec/api/transfer": "/transfer",
     },
   },
   {
